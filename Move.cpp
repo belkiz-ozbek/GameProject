@@ -7,18 +7,20 @@
 #include <iostream>
 #include <QtCore>
 
+int distance = 10;
+
 void player::keyPressEvent(QKeyEvent *event){
     if (event->key() == Qt::Key_Left){
-        setPos(x()-10,y());
+        setPos(x()-distance,y());
     }
     else if (event->key() == Qt::Key_Right){
-        setPos(x()+10,y());
+        setPos(x()+distance,y());
     }
     else if (event->key() == Qt::Key_Up){
-        setPos(x(),y()-10);
+        setPos(x(),y()-distance);
     }
     else if (event->key() == Qt::Key_Down){
-        setPos(x(),y()+10);
+        setPos(x(),y()+distance);
 
     }
 }
@@ -40,24 +42,24 @@ void Ball::randomMove(){
     switch(randomNumber)
     {
     case 0:
-        if (x()<=10 || y()<=10 )
+        if (x()<=distance || y()<=distance )
             break;
-        setPos(x()-10,y()-10);
+        setPos(x()-distance,y()-distance);
         break;
     case 1:
-        if (x()>=490  || y()<=10 )
+        if (x()>=490  || y()<=distance )
             break;
-        setPos(x()+10,y()-10);
+        setPos(x()+distance,y()-distance);
         break;
     case 2:
         if (x()>=490  || y() >= 490 )
             break;
-        setPos(x()+10,y()+10);
+        setPos(x()+distance,y()+distance);
         break;
     case 3:
-        if (x()<=10 || y() >= 490 )
+        if (x()<=distance || y() >= 490 )
             break;
-        setPos(x()-10,y()+10);
+        setPos(x()-distance,y()+distance);
         break;
     }
         QThread::msleep(10000);
