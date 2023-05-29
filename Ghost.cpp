@@ -1,13 +1,16 @@
 #include "Ghost.h"
 #include "qpen.h"
 #include "Player.h"
-
+#include <QtCore>
+#include <QGraphicsEllipseItem>
+#include <QGraphicsPixmapItem>
 
 Ghost::Ghost(int sceneLengthY , int sceneWidthX, Player &player ){
 
-    setRect(10,10,10,10);
-    setPen(QPen(QColor(255, 0, 0), 2));
-    setBrush(QBrush(QColor(15, 144, 2)));
+    //setRect(10,10,10,10);
+    //setPen(QPen(QColor(255, 0, 0), 2));
+    //setBrush(QBrush(QColor(15, 144, 2)));
+    setPixmap(QPixmap(":/images/ghost.png"));
     this->isActive = true;
     this->player = &player;
 
@@ -43,7 +46,7 @@ void Ghost::setIsActive(bool control){
 bool Ghost::active(){
     bool isActive = true;
 
-//hayaletin durma algoritmasi 
+    //hayaletin durma algoritmasi
     if (player->getPosX() == this->getPosX()
         ||  player->getPosY() == this->getPosY())
     {
@@ -98,8 +101,4 @@ void Ghost::randomMove(){
         posY = y();
 
     }
-
-
-
-
 }
