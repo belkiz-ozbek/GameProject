@@ -16,6 +16,9 @@ Player::Player(int sceneLengthY , int sceneWidthX, int l=100, int w=100, int pos
     sceneWidth = sceneWidthX ;
     setRect(0,0,l,w);
     setPos(posX,posY);
+    
+    setFlag(QGraphicsItem::ItemIsFocusable);
+    setFocus();
 }
 
 
