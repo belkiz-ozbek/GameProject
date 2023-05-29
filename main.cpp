@@ -7,7 +7,6 @@
 #include <QColor>
 #include <QPen>
 #include "Player.h"
-#include "Player2.h"
 #include "Ghost.h"
 #include <QThread>
 #include <QTimer>
