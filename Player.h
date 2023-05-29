@@ -2,9 +2,10 @@
 #define PLAYER_H
 
 
-#include <QGraphicsRectItem>
+#include <QtCore>
+#include <QGraphicsPixmapItem>
 
-class Player: public QGraphicsRectItem{
+class Player: public QGraphicsPixmapItem{
 
 private:
     int length;
