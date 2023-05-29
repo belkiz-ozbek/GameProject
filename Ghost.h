@@ -5,8 +5,9 @@
 #include "Player.h"
 #include <QtCore>
 #include <QGraphicsEllipseItem>
+#include <QGraphicsPixmapItem>
 
-class Ghost:public QObject ,  public QGraphicsRectItem{
+class Ghost:public QObject ,  public QGraphicsPixmapItem{
 
     Q_OBJECT
 
