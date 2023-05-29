@@ -4,19 +4,18 @@
 #include <iostream>
 #include <random>
 
-
 Player::Player(int sceneLengthY , int sceneWidthX, int l=100, int w=100, int posX = 0, int posY =0 ){
 
-    setBrush(QBrush(QColor(255, 255, 255)));
+    //setBrush(QBrush(QColor(255, 255, 255)));
+    setPixmap(QPixmap(":/images/startIcon.png"));
     length = l;
     width = w;
     posX = posX;
     posY = posY;
     sceneLength = sceneLengthY ;
     sceneWidth = sceneWidthX ;
-    setRect(0,0,l,w);
+    //setRect(0,0,l,w);
     setPos(posX,posY);
-    
     setFlag(QGraphicsItem::ItemIsFocusable);
     setFocus();
 }
