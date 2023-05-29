@@ -2,7 +2,7 @@
 #define GHOST_H
 
 
-
+#include "Player.h"
 #include <QtCore>
 #include <QGraphicsEllipseItem>
 
@@ -16,14 +16,16 @@ private:
     int posX;
     int posY;
     bool isActive;
+    Player * player;
 
 public:
 
-    Ghost(int sceneLength, int sceneWidth);
+    Ghost(int sceneLength, int sceneWidth, Player  &player);
     int getPosX();
     int getPosY();
     bool getIsActive();
     void setIsActive(bool control);
+    bool active();
 
 
 
