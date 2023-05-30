@@ -1,43 +1,25 @@
+// Ghost.h
+
 #ifndef GHOST_H
 #define GHOST_H
 
-
+#include <QGraphicsRectItem>
+#include <QObject>
 #include "Player.h"
-#include <QtCore>
-#include <QGraphicsEllipseItem>
-#include <QGraphicsPixmapItem>
 
-class Ghost:public QObject ,  public QGraphicsPixmapItem{
-
+class Ghost : public QObject, public QGraphicsRectItem
+{
     Q_OBJECT
-
 private:
     int sceneLength;
     int sceneWidth;
-    int posX;
-    int posY;
-    bool isActive;
-    Player * player;
+    Player& player;
 
 public:
-
-    Ghost(int sceneLength, int sceneWidth, Player  &player);
-    int getPosX();
-    int getPosY();
-    bool getIsActive();
-    void setIsActive(bool control);
-    bool active();
-
-
-
-
-
-
+    Ghost(int sceneLength, int sceneWidth, Player& player);
 
 public slots:
     void randomMove();
-
 };
-
 
 #endif // GHOST_H
