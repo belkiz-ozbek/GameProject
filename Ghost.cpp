@@ -88,17 +88,17 @@ void Ghost::randomMove(){
             setPos(x()-10,y()-10);
             break;
         case 1:
-            if (x()>=480  || y()<=20 )
+            if (x()>=sceneWidth  || y()<=20 )
                 break;
             setPos(x()+10,y()-10);
             break;
         case 2:
-            if (x()>=480  || y() >= 480 )
+            if (x()>=sceneWidth  || y() >= sceneLength )
                 break;
             setPos(x()+10,y()+10);
             break;
         case 3:
-            if (x()<=20 || y() >= 480 )
+            if (x()<=20 || y() >= sceneLength )
                 break;
             setPos(x()-10,y()+10);
             break;
