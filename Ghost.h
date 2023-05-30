@@ -17,11 +17,12 @@ private:
     int posX;
     int posY;
     bool isActive;
-    Player *player;
+    Player *player1;
+    Player *player2;
     QTimer* timer;
 
 public:
-    Ghost(int sceneLength, int sceneWidth, Player& player);
+    Ghost(int sceneLength, int sceneWidth, Player& player1, Player& player2);
     int getPosX();
     int getPosY();
     bool getIsActive();
