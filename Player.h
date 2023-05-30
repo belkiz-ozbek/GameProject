@@ -37,7 +37,7 @@ public:
     
   
     void keyPressEvent(QKeyEvent * event);
-    //override;
+    void keyReleaseEvent(QKeyEvent * event);
 
 };
 #endif // PLAYER_H
