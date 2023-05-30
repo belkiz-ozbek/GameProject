@@ -64,6 +64,10 @@ bool Ghost::active(){
         &&  player->getPosY()  < this->getPosY() )
     {
         timer->stop();
+        int point ;
+        point = player->getScore();
+        point = point+1;
+        player->setScore(point);
     }
 
 
