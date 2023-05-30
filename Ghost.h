@@ -18,6 +18,7 @@ private:
     int posY;
     bool isActive;
     Player *player;
+    QTimer* timer;
 
 public:
     Ghost(int sceneLength, int sceneWidth, Player& player);
