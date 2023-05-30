@@ -3,8 +3,8 @@
 #include "Player.h"
 #include <QKeyEvent>
 
-Player::Player(int l, int w, int posX, int posY, int sceneLength, int sceneWidth)
-    : length(l), width(w), posX(posX), posY(posY), sceneLength(sceneLength), sceneWidth(sceneWidth), score(0)
+Player::Player(int l, int w, int posX, int posY, int sceneLength, int sceneWidth, bool isListeningArrowKeys)
+    : length(l), width(w), posX(posX), posY(posY), sceneLength(sceneLength), sceneWidth(sceneWidth), score(0), listenArrowKeys(isListeningArrowKeys)
 {
 }
 
@@ -87,20 +87,42 @@ void Player::moveDown()
 
 void Player::keyPressEvent(QKeyEvent* event)
 {
-    switch (event->key()) {
-    case Qt::Key_Left:
-        moveLeft();
-        break;
-    case Qt::Key_Right:
-        moveRight();
-        break;
-    case Qt::Key_Up:
-        moveUp();
-        break;
-    case Qt::Key_Down:
-        moveDown();
-        break;
-    default:
-        break;
+    if(listenArrowKeys){
+        switch (event->key()) {
+        case Qt::Key_Left:
+            moveLeft();
+            break;
+        case Qt::Key_Right:
+            moveRight();
+            break;
+        case Qt::Key_Up:
+            moveUp();
+            break;
+        case Qt::Key_Down:
+            moveDown();
+            break;
+        default:
+            break;
+        }
+    }else{
+
+
+        switch (event->key()) {
+        case Qt::Key_A:
+            moveLeft();
+            break;
+        case Qt::Key_D:
+            moveRight();
+            break;
+        case Qt::Key_W:
+            moveUp();
+            break;
+        case Qt::Key_S:
+            moveDown();
+            break;
+        default:
+            break;
+        }
+
     }
 }
