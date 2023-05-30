@@ -2,8 +2,8 @@
 #define PLAYER_H
 
 
-#include <QtCore>
-#include <QGraphicsPixmapItem>
+#include <QGraphicsRectItem>
+#include <QKeyEvent>
 
 class Player: public QGraphicsPixmapItem{
 
@@ -28,7 +28,14 @@ public:
     int getScore();
     void setScore(int point);
 
+    void moveLeft();
+    void moveRight();
+    void moveUp();
+    void moveDown();
+    
+    protected:
     void keyPressEvent(QKeyEvent * event);
+    override;
 
 };
 #endif // PLAYER_H
