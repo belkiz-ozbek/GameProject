@@ -92,17 +92,22 @@ void Player::keyPressEvent(QKeyEvent* event)
         switch (event->key()) {
         case Qt::Key_Left:
             moveLeft();
+            setPixmap(QPixmap(":/images/leftMale"));
             break;
         case Qt::Key_Right:
             moveRight();
+            setPixmap(QPixmap(":/images/rightMale"));
             break;
         case Qt::Key_Up:
             moveUp();
+            setPixmap(QPixmap(":/images/upMale"));
             break;
         case Qt::Key_Down:
             moveDown();
+            setPixmap(QPixmap(":/images/downMale"));
             break;
         default:
+            setPixmap(QPixmap(":/images/startMale"));
             break;
         }
     }else{
@@ -111,19 +116,30 @@ void Player::keyPressEvent(QKeyEvent* event)
         switch (event->key()) {
         case Qt::Key_A:
             moveLeft();
+            setPixmap(QPixmap(":/images/femaleLeft"));
             break;
         case Qt::Key_D:
             moveRight();
+            setPixmap(QPixmap(":/images/femaleRight"));
             break;
         case Qt::Key_W:
             moveUp();
+            setPixmap(QPixmap(":/images/femaleUp"));
             break;
         case Qt::Key_S:
             moveDown();
+            setPixmap(QPixmap(":/images/femaleDown"));
             break;
         default:
+            setPixmap(QPixmap(":/images/femaleStart"));
             break;
         }
 
     }
 }
+
+void Player::keyReleaseEvent(QKeyEvent *event){
+    setPixmap(QPixmap(":/images/startMale"));
+    setPixmap(QPixmap(":/images/femaleStart"));
+}
+
