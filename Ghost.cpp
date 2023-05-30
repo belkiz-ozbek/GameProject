@@ -111,5 +111,8 @@ void Ghost::randomMove(){
         posX = x();
         posY = y();
 
-
+if (!getIsActive()) {
+                scene()->removeItem(this); // Remove the item from the scene
+                delete this; // Delete the object
+                return;}
     }}
