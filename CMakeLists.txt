@@ -18,8 +18,13 @@ set(PROJECT_SOURCES
         main.cpp
         Player.h
         Ghost.h
+         CustomView.h
+     CustomView.cpp
+     images.qrc
         Player.cpp
         Ghost.cpp
+
+
         ${TS_FILES}
 )
 
