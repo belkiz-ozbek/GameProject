@@ -50,7 +50,7 @@ bool Ghost::active(){
     if (player->getPosX() == this->getPosX()
         ||  player->getPosY() == this->getPosY())
     {
-        isActive = false;
+         timer->stop();
     }
 
     return isActive;
@@ -58,30 +58,39 @@ bool Ghost::active(){
 
 
 void Ghost::randomMove(){
-    int randDirection = rand() % 4; // 0: up, 1: right, 2: down, 3: left
+   std::random_device rd;
+    std::mt19937 gen(rd());
+    std::uniform_int_distribution<int> distribution(0, 3);
 
-    switch (randDirection) {
-    case 0: // Up
-        if (y() > 0)
-            setPos(x(), y() - 10);
-        break;
-    case 1: // Right
-        if (x() + 36 < sceneLength)
-            setPos(x() + 10, y());
-        break;
-    case 2: // Down
-        if (y() + 36 < sceneWidth)
-            setPos(x(), y() + 10);
-        break;
-    case 3: // Left
-        if (x() > 0)
-            setPos(x() - 10, y());
-        break;
-    default:
-        break;
-    }
+    this->active();
 
+        int randomNumber = distribution(gen);
 
+        switch(randomNumber)
+        {
+        case 0:
+            if (x()<=20 || y()<=20 )
+                break;
+            setPos(x()-10,y()-10);
+            break;
+        case 1:
+            if (x()>=480  || y()<=20 )
+                break;
+            setPos(x()+10,y()-10);
+            break;
+        case 2:
+            if (x()>=480  || y() >= 480 )
+                break;
+            setPos(x()+10,y()+10);
+            break;
+        case 3:
+            if (x()<=20 || y() >= 480 )
+                break;
+            setPos(x()-10,y()+10);
+            break;
+
+        posX = x();
+        posY = y();
 
 
 }
