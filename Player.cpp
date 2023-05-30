@@ -6,6 +6,7 @@
 Player::Player(int l, int w, int posX, int posY, int sceneLength, int sceneWidth, bool isListeningArrowKeys)
     : length(l), width(w), posX(posX), posY(posY), sceneLength(sceneLength), sceneWidth(sceneWidth), score(0), listenArrowKeys(isListeningArrowKeys)
 {
+    setPos(posX, posY);
     setPixmap(QPixmap(":/images/startIcon.png"));
 }
 
