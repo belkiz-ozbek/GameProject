@@ -91,6 +91,6 @@ void Ghost::randomMove(){
 
         posX = x();
         posY = y();
-
+        }
 
 }
