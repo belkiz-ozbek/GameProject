@@ -19,7 +19,7 @@ Ghost::Ghost(int sceneLengthY , int sceneWidthX, Player &player ){
     int posY = dis(gen);
     setPos(posX,  posY);
 
-    QTimer* timer = new QTimer(this);
+    timer = new QTimer(this);
     connect(timer, SIGNAL(timeout()), this, SLOT(randomMove()));
     timer->start(100);
 
