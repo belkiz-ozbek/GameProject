@@ -1,67 +1,61 @@
 #include <QApplication>
-#include <QCoreApplication>
 #include <QGraphicsScene>
-#include <QGraphicsRectItem>
 #include <QGraphicsView>
-#include <QBrush>
-#include <QColor>
-#include <QPen>
+#include <QTimer>
+#include "CustomView.h"
 #include "Player.h"
 #include "Ghost.h"
-#include <QThread>
-#include <QTimer>
-#include <iostream>
-/*
-Prereqs:
--basic knowledge of c++ (pointers and memory management)
--VERY basic knowledge of Qt (widgets)
-Tutorial Topics:
--QGraphicsScene
--QGraphicsItem (QGraphicsRectItem)
--QGraphicsView
-*/
 
-int main(int argc, char *argv[])
+int main(int argc, char* argv[])
 {
     QApplication a(argc, argv);
 
-    // create a scene
-    int sceneLength = 500;
-    int sceneWidth = 500;
+    QGraphicsScene scene;
+    scene.setSceneRect(0, 0, 500, 500);
 
-    QGraphicsScene * scene = new QGraphicsScene();
-    scene->setSceneRect(0, 0, sceneLength, sceneWidth);
-    scene->setBackgroundBrush(QBrush(QColor(0, 0, 0)));
+    Player player1(40, 40, 0, 0, scene.sceneRect().width(), scene.sceneRect().height());
+    player1.setRect(0, 0, 40, 40);
+    player1.setFlag(QGraphicsItem::ItemIsFocusable);
+    player1.setFocus();
+    scene.addItem(&player1);
 
+    Player player2(40, 40, 100, 100, scene.sceneRect().width(), scene.sceneRect().height());
+    player2.setRect(0, 0, 40, 40);
+    player2.setFlag(QGraphicsItem::ItemIsFocusable);
+    player2.setFocus();
+    scene.addItem(&player2);
 
-    // create an item to put into the scene
-    Player * rect = new Player(sceneLength, sceneWidth, 100,100,0 ,0  );
-    Ghost * ghost = new Ghost(sceneLength, sceneWidth, *rect);
+    Ghost ghosts[10] = {
+        Ghost(scene.sceneRect().width(), scene.sceneRect().height(), player1),
+        Ghost(scene.sceneRect().width(), scene.sceneRect().height(), player1),
+        Ghost(scene.sceneRect().width(), scene.sceneRect().height(), player1),
+        Ghost(scene.sceneRect().width(), scene.sceneRect().height(), player1),
+        Ghost(scene.sceneRect().width(), scene.sceneRect().height(), player1),
+        Ghost(scene.sceneRect().width(), scene.sceneRect().height(), player1),
+        Ghost(scene.sceneRect().width(), scene.sceneRect().height(), player1),
+        Ghost(scene.sceneRect().width(), scene.sceneRect().height(), player1),
+        Ghost(scene.sceneRect().width(), scene.sceneRect().height(), player1),
+        Ghost(scene.sceneRect().width(), scene.sceneRect().height(), player1)
+    };
 
+    for (int i = 0; i < 10; i++) {
+        scene.addItem(&ghosts[i]);
+    }
 
+    QGraphicsView view(&scene);
+    view.setInteractive(true);
+    view.setFocus();
 
+    QTimer timers[10];
+    for (int i = 0; i < 10; i++) {
+        QObject::connect(&timers[i], SIGNAL(timeout()), &ghosts[i], SLOT(randomMove()));
+        timers[i].start(1000);
+    }
 
-    // add the item to the scene
-    scene->addItem(rect);
-    scene->addItem(ghost);
-
-
-
-
-
-    // add a view to visualize the scene
-    QGraphicsView * view = new QGraphicsView(scene);
-    view->show();
-
-    QThread* thread = new QThread();
-    ghost->moveToThread(thread);
-
-    QObject::connect(thread, &QThread::started, ghost, &Ghost::randomMove);
-    thread->start();
-
-
-
-
+    CustomView customView(nullptr, &player1, &player2);
+    customView.setScene(&scene);
+    customView.setViewport(&view);
+    customView.show();
 
     return a.exec();
 }
