@@ -24,7 +24,7 @@ int main(int argc, char* argv[])
     player1.setFocus();
     scene.addItem(&player1);
 
-    Player player2(40, 40, 100, 100, scene.sceneRect().width(), scene.sceneRect().height(), false);
+    Player player2(40, 40, 460, 460, scene.sceneRect().width(), scene.sceneRect().height(), false);
     
     player2.setFlag(QGraphicsItem::ItemIsFocusable);
     player2.setFocus();
