@@ -4,6 +4,7 @@
 
 #include <QGraphicsRectItem>
 #include <QKeyEvent>
+#include <QGraphicsPixmapItem>
 
 class Player: public QGraphicsPixmapItem{
 
@@ -15,9 +16,10 @@ private:
     int sceneLength;
     int sceneWidth;
     int score;
+    bool listenArrowKeys;
 
 public:
-    Player(int l, int w, int posX, int posY, int sceneLength , int sceneWidth);
+    Player(int l, int w, int posX, int posY, int sceneLength , int sceneWidth, bool isListeningArrowKeys);
     int getLength();
     int getWidth();
     int getArea();
@@ -33,9 +35,9 @@ public:
     void moveUp();
     void moveDown();
     
-    protected:
+  
     void keyPressEvent(QKeyEvent * event);
-    override;
+    //override;
 
 };
 #endif // PLAYER_H
