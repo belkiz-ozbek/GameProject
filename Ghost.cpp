@@ -43,15 +43,29 @@ void Ghost::setIsActive(bool control){
     this->isActive = control;
 }
 
+
 bool Ghost::active(){
     bool isActive = true;
 
     //hayaletin durma algoritmasi
-    if (player->getPosX() == this->getPosX()
-        ||  player->getPosY() == this->getPosY())
+    if (player->getPosX() - 50 < this->getPosX()
+        &&  player->getPosY() + 114 > this->getPosY()
+        && player->getPosX() + 164 > this->getPosX()
+        &&  player->getPosY() -50 < this->getPosY() )
     {
-         timer->stop();
+        setVisible(true);
+        isActive = false;
+    }else
+         setVisible(false);
+
+    if (player->getPosX() + 30 < this->getPosX()
+        &&  player->getPosY() + 64 > this->getPosY()
+        && player->getPosX() + 84 > this->getPosX()
+        &&  player->getPosY()  < this->getPosY() )
+    {
+        timer->stop();
     }
+
 
     return isActive;
 }
@@ -91,6 +105,6 @@ void Ghost::randomMove(){
 
         posX = x();
         posY = y();
-        }
 
-}
+
+        }}
