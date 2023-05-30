@@ -5,6 +5,10 @@
 #include "CustomView.h"
 #include "Player.h"
 #include "Ghost.h"
+#include <QBrush>
+#include <QColor>
+#include <QPen>
+
 
 int main(int argc, char* argv[])
 {
@@ -13,13 +17,13 @@ int main(int argc, char* argv[])
     QGraphicsScene scene;
     scene.setSceneRect(0, 0, 500, 500);
 
-    Player player1(40, 40, 0, 0, scene.sceneRect().width(), scene.sceneRect().height());
+    Player player1(40, 40, 0, 0, scene.sceneRect().width(), scene.sceneRect().height(), true);
     player1.setRect(0, 0, 40, 40);
     player1.setFlag(QGraphicsItem::ItemIsFocusable);
     player1.setFocus();
     scene.addItem(&player1);
 
-    Player player2(40, 40, 100, 100, scene.sceneRect().width(), scene.sceneRect().height());
+    Player player2(40, 40, 100, 100, scene.sceneRect().width(), scene.sceneRect().height(), false);
     player2.setRect(0, 0, 40, 40);
     player2.setFlag(QGraphicsItem::ItemIsFocusable);
     player2.setFocus();
