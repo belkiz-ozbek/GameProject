@@ -3,12 +3,13 @@
 #include "Player.h"
 #include <random>
 #include <QTimer>
-Ghost::Ghost(int sceneLengthY , int sceneWidthX, Player &player ){
+Ghost::Ghost(int sceneLengthY , int sceneWidthX, Player &player1, Player &player2 ){
     setPixmap(QPixmap(":/images/ghost.png"));
     this->isActive = true;
     this->sceneLength =sceneLengthY;
     this->sceneWidth = sceneWidthX;
-    this->player = &player;
+    this->player1 = &player1;
+    this->player2 = &player2;
 
     std::random_device rd;
     std::mt19937 gen(rd());
